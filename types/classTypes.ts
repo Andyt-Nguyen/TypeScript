@@ -3,14 +3,29 @@
 //** Wow just like java and c++ */
 
 class Employee {
-  private employeeName: string;
+  private _employeeName: string;
+  private _isSleeping: boolean;
 
   constructor(name: string) {
-    this.employeeName = name;
+    this._employeeName = name;
+    this._isSleeping = false;
   }
 
-  greet():void {
-    console.log(`Good morning ${this.employeeName}`)
+  public greet():void {
+    console.log(`Good morning ${this._employeeName}`)
+  }
+
+  public sleep():void {
+    if(this._isSleeping) {
+      console.log(`${this._employeeName} is now sleeping under the desk`);
+    } else {
+      console.log(`${this._employeeName} is not sleeping`);
+    }
+
+  }
+
+  public set isSleeping(val: boolean) {
+    this._isSleeping = val;
   }
 }
 
@@ -19,14 +34,16 @@ class Manager extends Employee {
     super(name);
   }
 
-  delegateWork(): void {
+  public delegateWork(): void {
     console.log(`Manager delegating tasks`);
   }
 }
 
-let employee1 = new Employee('Andrew');
+const employee1: Employee = new Employee('Andrew');
 employee1.greet();
+employee1.isSleeping = true;
+employee1.sleep();
 
-let m1 = new Manager('Brocko');
+const m1: Manager = new Manager('Brocko');
 m1.delegateWork();
 m1.greet();
