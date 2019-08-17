@@ -14,11 +14,6 @@ class Employee {
   }
 }
 
-let employee1 = new Employee('Andrew');
-employee1.greet();
-
-
-
 class Manager extends Employee {
   constructor(name: string) {
     super(name);
@@ -28,6 +23,9 @@ class Manager extends Employee {
     console.log(`Manager delegating tasks`);
   }
 }
+
+let employee1 = new Employee('Andrew');
+employee1.greet();
 
 let m1 = new Manager('Brocko');
 m1.delegateWork();
